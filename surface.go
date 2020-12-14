@@ -10,6 +10,8 @@ import (
 type Error int
 
 // Error makes Error an error.
+//
+// Also see HasDecayed().
 func (e Error) Error() string {
 	var msg string
 	switch int(e) {
@@ -24,7 +26,7 @@ func (e Error) Error() string {
 	case 5:
 		msg = "epoch elements are sub-orbital"
 	case 6:
-		// See HashDecayed.
+		// See HasDecayed().
 		msg = decayError
 	default:
 		msg = "NA"
@@ -40,6 +42,9 @@ const decayError = "satellite has decayed"
 func HasDecayed(e error) bool {
 	// Too much trouble to try to check type (in the face of
 	// fmt.wrapError, etc).
+	if e == nil {
+		return false
+	}
 	return strings.Contains(e.Error(), decayError)
 }
 
@@ -47,9 +52,8 @@ func HasDecayed(e error) bool {
 // milliseconds.
 //
 // Also see Prop().
-//
-// ToDo: Support higher time resolution.
 func (tle *TLE) PropUnixMillis(ms int64) ([]float64, []float64, error) {
+	// ToDo: Support higher time resolution.
 	var (
 		r = make([]float64, 3)
 		v = make([]float64, 3)
@@ -107,15 +111,18 @@ type Vect struct {
 
 // Ephemeris represents position and velocity.
 type Ephemeris struct {
-	// V is velocity.
+	// V is velocity in m/sec.
 	V Vect
 
-	// C is Cartesian position.
+	// ECI is position in Earth-Centered Intertial coordinates.
 	ECI Vect
 }
 
 // Prop propagates the given TLE.
+//
+// Currently the resolution is only milliseconds.
 func (o *TLE) Prop(t time.Time) (Ephemeris, error) {
+	// ToDo: Increase resolution.
 	p, v, err := o.PropUnixMillis(t.UnixNano() / 1000 / 1000)
 	var e Ephemeris
 	if err == nil {
