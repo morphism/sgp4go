@@ -350,8 +350,8 @@ type TLE struct {
 //
 func parseLines(tle *TLE, line1 *byte, line2 *byte) {
 	(*tle).Rec.whichconst = int64(2)
-	Strncpy64(&(*tle).line1[0], line1, int64(uint64(int64(69))))
-	Strncpy64(&(*tle).line2[0], line2, int64(uint64(int64(69))))
+	strncpy64(&(*tle).line1[0], line1, int64(uint64(int64(69))))
+	strncpy64(&(*tle).line2[0], line2, int64(uint64(int64(69))))
 	*((*byte)(func() unsafe.Pointer {
 		tempVar := &(*tle).line1[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(69))*unsafe.Sizeof(*tempVar))
@@ -360,7 +360,7 @@ func parseLines(tle *TLE, line1 *byte, line2 *byte) {
 		tempVar := &(*tle).line2[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(69))*unsafe.Sizeof(*tempVar))
 	}())) = byte(int64(0))
-	Strncpy64(&(*tle).intlid[0], &*((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(line1)) + (uintptr)(int64(9))*unsafe.Sizeof(*line1)))), int64(uint64(int64(8))))
+	strncpy64(&(*tle).intlid[0], &*((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(line1)) + (uintptr)(int64(9))*unsafe.Sizeof(*line1)))), int64(uint64(int64(8))))
 	(*tle).Rec.classification = *((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(line1)) + (uintptr)(int64(7))*unsafe.Sizeof(*line1))))
 	(*tle).objectNum = int64(gd(line1, int64(2), int64(7)))
 	(*tle).ndot = gdi(line1, int64(35), int64(44))
@@ -410,13 +410,13 @@ func isLeap(year int64) bool_ {
 //
 func parseEpoch(rec *ElsetRec, str *byte) int64 {
 	var tmp []byte = make([]byte, 16, 16)
-	Strncpy64(&tmp[0], str, int64(uint64(int64(14))))
+	strncpy64(&tmp[0], str, int64(uint64(int64(14))))
 	*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(15))*unsafe.Sizeof(*tempVar))
 	}())) = byte(int64(0))
 	var tmp2 []byte = make([]byte, 16, 16)
-	Strncpy64(&tmp2[0], &tmp[0], int64(uint64(int64(2))))
+	strncpy64(&tmp2[0], &tmp[0], int64(uint64(int64(2))))
 	*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp2[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(2))*unsafe.Sizeof(*tempVar))
@@ -432,7 +432,7 @@ func parseEpoch(rec *ElsetRec, str *byte) int64 {
 	} else {
 		year += int64(2000)
 	}
-	Strncpy64(&tmp2[0], &*((*byte)(func() unsafe.Pointer {
+	strncpy64(&tmp2[0], &*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(2))*unsafe.Sizeof(*tempVar))
 	}())), int64(uint64(int64(3))))
@@ -446,7 +446,7 @@ func parseEpoch(rec *ElsetRec, str *byte) int64 {
 	doy, _ := strconv.ParseInt(string(tmp2[0:3]), 10, 64)
 
 	*&tmp2[0] = '0'
-	Strncpy64(&*((*byte)(func() unsafe.Pointer {
+	strncpy64(&*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp2[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(1))*unsafe.Sizeof(*tempVar))
 	}())), &*((*byte)(func() unsafe.Pointer {
@@ -527,7 +527,7 @@ func gd(str *byte, ind1 int64, ind2 int64) float64 {
 	var num float64 = float64(int64(0))
 	var tmp []byte = make([]byte, 50, 50)
 	var cnt int64 = ind2 - ind1
-	Strncpy64(&tmp[0], &*((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(str)) + (uintptr)(ind1)*unsafe.Sizeof(*str)))), int64(uint64(cnt)))
+	strncpy64(&tmp[0], &*((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(str)) + (uintptr)(ind1)*unsafe.Sizeof(*str)))), int64(uint64(cnt)))
 	*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(cnt)*unsafe.Sizeof(*tempVar))
@@ -552,7 +552,7 @@ func gdi(str *byte, ind1 int64, ind2 int64) float64 {
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(1))*unsafe.Sizeof(*tempVar))
 	}())) = '.'
 	var cnt int64 = ind2 - ind1
-	Strncpy64(&*((*byte)(func() unsafe.Pointer {
+	strncpy64(&*((*byte)(func() unsafe.Pointer {
 		tempVar := &tmp[0]
 		return unsafe.Pointer(uintptr(unsafe.Pointer(tempVar)) + (uintptr)(int64(2))*unsafe.Sizeof(*tempVar))
 	}())), &*((*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(str)) + (uintptr)(ind1)*unsafe.Sizeof(*str)))), int64(uint64(cnt)))

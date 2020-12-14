@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-func Strncpy64(dest, src *byte, len int64) *byte {
+func strncpy64(dest, src *byte, len int64) *byte {
 	// Copy up to the len or first NULL bytes - whichever comes first.
 	var (
 		pSrc  = src
