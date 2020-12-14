@@ -1,3 +1,4 @@
+name: Release
 # .github/workflows/release.yaml
 
 on: 
