@@ -50,3 +50,6 @@ for details.
 The example command-line program [`sgp4go`](cmd/sgp4go) reads TLEs
 from `stdin` and writes propagation data to `stdout`. See
 [`test.sh`](test.sh) for an example invocation.
+
+Some `sgp4go` executables are available
+[here](https://github.com/morphism/sgp4go/releases).
