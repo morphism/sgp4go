@@ -44,4 +44,6 @@ The main constructor is `NewTLE()`, and the primary method is
 `Prop()`.  See `ExampleProp()` in
 [`surface_test.go`](surface_test.go).
 
+See [the documentation](https://godoc.org/github.com/morphism/sgp4go)
+for details.
 
