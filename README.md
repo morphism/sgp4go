@@ -38,3 +38,10 @@ almost all pass.  The one exception is for objectNum 20413 at
 mins=1844335, where 1e-07 < rdist < 1e-06.  The tests have been edited
 to tolerate rdist < 1e-07 rather than demand rdist < 1e-06.
 
+## Usage
+
+The main constructor is `NewTLE()`, and the primary method is
+`Prop()`.  See `ExampleProp()` in
+[`surface_test.go`](surface_test.go).
+
+
