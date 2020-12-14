@@ -1,3 +1,5 @@
 github.com/elliotchance/c2go v0.26.7 h1:VNvR+m1XHo+lsd7HRJpMJWw4N++shTaQAnZhb0jzsWI=
 github.com/elliotchance/c2go v0.26.7/go.mod h1:+YFuwnXljn61f5sFHSZ66eH9KTjzzSU6QG1sZdg1l7s=
+github.com/jsmorph/go-satellite v0.0.0-20200209185444-f2e743f52cab h1:ZoBXZLI5Vjf6xSr1i1fvnn3wV8QJ+tXH7+HGJZ4pYM8=
+github.com/jsmorph/go-satellite v0.0.0-20200209185444-f2e743f52cab/go.mod h1:YAAfnTsMkxJgZ+IRzyu8LGGSvaKJSCtzqx+nKr0EBig=
 golang.org/x/tools v0.0.0-20181109182537-4e34152f1676/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=

@@ -133,3 +133,8 @@ func (o *TLE) Prop(t time.Time) (Ephemeris, error) {
 	}
 	return e, err
 }
+
+// NoradCatNum returns the NORAD catalog number of the TLE.
+func (o *TLE) NoradCatNum() int {
+	return int(o.objectNum)
+}

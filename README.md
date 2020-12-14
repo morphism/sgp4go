@@ -47,3 +47,6 @@ The main constructor is `NewTLE()`, and the primary method is
 See [the documentation](https://godoc.org/github.com/morphism/sgp4go)
 for details.
 
+The example command-line program [`sgp4go`](cmd/sgp4go) reads TLEs
+from `stdin` and writes propagation data to `stdout`. See
+[`test.sh`](test.sh) for an example invocation.
