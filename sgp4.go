@@ -113,7 +113,7 @@ func sscanf(s string, format string, args ...interface{}) int {
 
 type bool_ int64
 
-type ElsetRec struct {
+type elsetRec struct {
 	whichconst     int64
 	satnum         int64
 	epochyr        int64
@@ -318,7 +318,7 @@ type ElsetRec struct {
 type TLE struct {
 	sync.Mutex
 
-	Rec       ElsetRec
+	Rec       elsetRec
 	line1     [70]byte
 	line2     [70]byte
 	intlid    [12]byte
@@ -408,7 +408,7 @@ func isLeap(year int64) bool_ {
 // parseEpoch - transpiled function from  /home/somebody/aholinch/sgp4/src/c/all.c:88
 // convert doy to mon, day
 //
-func parseEpoch(rec *ElsetRec, str *byte) int64 {
+func parseEpoch(rec *elsetRec, str *byte) int64 {
 	var tmp []byte = make([]byte, 16, 16)
 	strncpy64(&tmp[0], str, int64(uint64(int64(14))))
 	*((*byte)(func() unsafe.Pointer {
@@ -571,7 +571,7 @@ func gdi(str *byte, ind1 int64, ind2 int64) float64 {
 // setValsToRec - transpiled function from  /home/somebody/aholinch/sgp4/src/c/all.c:203
 // 229.1831180523293
 //
-func setValsToRec(tle *TLE, rec *ElsetRec) {
+func setValsToRec(tle *TLE, rec *elsetRec) {
 	var xpdotp float64 = 1440.0 / (2.0 * 3.141592653589793)
 	(*rec).elnum = (*tle).elnum
 	(*rec).revnum = (*tle).revnum
@@ -730,7 +730,7 @@ func setValsToRec(tle *TLE, rec *ElsetRec) {
 // if init == 'n'
 // dpper
 //
-func dpper(e3 float64, ee2 float64, peo float64, pgho float64, pho float64, pinco float64, plo float64, se2 float64, se3 float64, sgh2 float64, sgh3 float64, sgh4 float64, sh2 float64, sh3 float64, si2 float64, si3 float64, sl2 float64, sl3 float64, sl4 float64, t float64, xgh2 float64, xgh3 float64, xgh4 float64, xh2 float64, xh3 float64, xi2 float64, xi3 float64, xl2 float64, xl3 float64, xl4 float64, zmol float64, zmos float64, init_ byte, rec *ElsetRec, opsmode byte) {
+func dpper(e3 float64, ee2 float64, peo float64, pgho float64, pho float64, pinco float64, plo float64, se2 float64, se3 float64, sgh2 float64, sgh3 float64, sgh4 float64, sh2 float64, sh3 float64, si2 float64, si3 float64, sl2 float64, sl3 float64, sl4 float64, t float64, xgh2 float64, xgh3 float64, xgh4 float64, xh2 float64, xh3 float64, xi2 float64, xi3 float64, xl2 float64, xl3 float64, xl4 float64, zmol float64, zmos float64, init_ byte, rec *elsetRec, opsmode byte) {
 	var alfdp float64
 	var betdp float64
 	var cosip float64
@@ -929,7 +929,7 @@ func dpper(e3 float64, ee2 float64, peo float64, pgho float64, pho float64, pinc
 /* ------------------------ do lunar terms ---------------------- */ //
 // dscom
 //
-func dscom(epoch float64, ep float64, argpp float64, tc float64, inclp float64, nodep float64, np float64, rec *ElsetRec) {
+func dscom(epoch float64, ep float64, argpp float64, tc float64, inclp float64, nodep float64, np float64, rec *elsetRec) {
 	var zes float64 = 0.01675
 	var zel float64 = 0.0549
 	var c1ss float64 = 2.9864797e-06
@@ -1220,7 +1220,7 @@ func dscom(epoch float64, ep float64, argpp float64, tc float64, inclp float64, 
 /* ------------ for sgp4, initialize the integrator ---------- */ //
 // dsinit
 //
-func dsinit(tc float64, xpidot float64, rec *ElsetRec) {
+func dsinit(tc float64, xpidot float64, rec *elsetRec) {
 	var ainv2 float64
 	var aonv float64 = 0
 	var cosisq float64
@@ -1526,7 +1526,7 @@ func dsinit(tc float64, xpidot float64, rec *ElsetRec) {
 // while iretn = 381
 // dsspace
 //
-func dspace(tc float64, rec *ElsetRec) {
+func dspace(tc float64, rec *elsetRec) {
 	var iretn int64
 	var delt float64
 	var ft float64
@@ -1696,7 +1696,7 @@ func dspace(tc float64, rec *ElsetRec) {
 //    else
 // initl
 //
-func initl(epoch float64, rec *ElsetRec) {
+func initl(epoch float64, rec *elsetRec) {
 	var ak float64
 	var d1 float64
 	var del float64
@@ -1864,7 +1864,7 @@ func initl(epoch float64, rec *ElsetRec) {
 //sgp4fix return bool_ean. satrec->error contains any error codes
 // sgp4init
 //
-func sgp4init(opsmode byte, satrec *ElsetRec) bool_ {
+func sgp4init(opsmode byte, satrec *elsetRec) bool_ {
 	var cc1sq float64
 	var cc2 float64
 	var cc3 float64
@@ -2222,7 +2222,7 @@ func sgp4init(opsmode byte, satrec *ElsetRec) bool_ {
 // sgp4fix for decaying satellites
 // sgp4
 //
-func sgp4(satrec *ElsetRec, tsince float64, r *float64, v *float64) bool_ {
+func sgp4(satrec *elsetRec, tsince float64, r *float64, v *float64) bool_ {
 	var axnl float64
 	var aynl float64
 	var betal float64
@@ -2522,7 +2522,7 @@ func sgp4(satrec *ElsetRec, tsince float64, r *float64, v *float64) bool_ {
 // km
 // getgravconst
 //
-func getgravconst(whichconst int64, rec *ElsetRec) {
+func getgravconst(whichconst int64, rec *elsetRec) {
 	(*rec).whichconst = whichconst
 	switch whichconst {
 	case int64(1):
