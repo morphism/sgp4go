@@ -22,10 +22,10 @@ which ultimated originated with [David Vallado](https://celestrak.com/software/v
 
 This implementation is a hand-edited transpilation of [C
 sources](https://github.com/aholinch/sgp4/tree/master/src/c) to
-[Go](these releases) by [`c2go`](https://github.com/elliotchance/c2go)
-(version v0.25.9 Dubnium 2018-12-30), and the emitted code was edited
-by hand.  The original C implementation test suite was included in
-this process.
+[Go](https://golang.org/) by
+[`c2go`](https://github.com/elliotchance/c2go) (version v0.25.9
+Dubnium 2018-12-30), and the emitted code was edited by hand.  The
+original C implementation test suite was included in this process.
 
 The substantive edits (of Go sources emitted by the transpiler) were
 the use of 64-bit integers to address at least one 32-bit overflow and
