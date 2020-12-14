@@ -35,7 +35,7 @@ func BenchmarkProp(b *testing.B) {
 	}
 }
 
-func ExampleProp() {
+func Example() {
 	var (
 		tle = `ISS (ZARYA)             
 1 25544U 98067A   20349.28181795  .00001103  00000-0  27992-4 0  9997
