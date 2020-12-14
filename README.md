@@ -36,7 +36,7 @@ Example: "var x2o3 float64 = 2 / 3" was edited to be "var x2o3 float64
 With those changes, the original (transpiled and hand-edited) tests
 almost all pass.  The one exception is for objectNum 20413 at
 mins=1844335, where 1e-07 < rdist < 1e-06.  The tests have been edited
-to tolerate rdist < 1e-07 rather than demand rdist < 1e-06.
+to tolerate rdist < 1e-06 rather than demand rdist < 1e-07.
 
 ## Usage
 
