@@ -95,6 +95,8 @@ func (tle *TLE) PropForMins(mins float64) ([]float64, []float64, error) {
 }
 
 // NewTLE constructs a new TLE (which can be propagated).
+//
+// Also see Set().
 func NewTLE(line1, line2 string) (*TLE, error) {
 	tle := &TLE{}
 	bs1 := []byte(line1)
@@ -102,6 +104,57 @@ func NewTLE(line1, line2 string) (*TLE, error) {
 	parseLines(tle, (*byte)(&bs1[0]), (*byte)(&bs2[0]))
 	// ToDo: Detect and report errors!
 	return tle, nil
+}
+
+// Set allows the caller to provide high-precision values than what a
+// TLE can perhaps provide; however, this code has not (yet) been
+// tested with respect to this additional precision.
+func (tle *TLE) Set(epoch time.Time, mm1, mm2, bstar, incl, ra, ecc, aop, anom, mm, rev float64) {
+
+	if !epoch.IsZero() {
+		tle.epoch = epoch.UnixNano() / 1000_000
+	}
+	if mm1 != 0 {
+		tle.ndot = mm1
+	}
+
+	if mm2 != 0 {
+		tle.nddot = mm2
+	}
+
+	if bstar != 0 {
+		tle.bstar = bstar
+	}
+
+	if incl != 0 {
+		tle.incDeg = incl
+	}
+
+	if ra != 0 {
+		tle.raanDeg = ra
+	}
+
+	if ecc != 0 {
+		tle.ecc = ecc
+	}
+
+	if aop != 0 {
+		tle.argpDeg = aop
+	}
+
+	if anom != 0 {
+		tle.maDeg = anom
+	}
+
+	if mm != 0 {
+		tle.n = mm
+	}
+
+	if rev != 0 {
+		tle.revnum = int64(rev)
+	}
+
+	setValsToRec(tle, &(*tle).Rec)
 }
 
 // Vect is a 3-vector.
