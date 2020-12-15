@@ -62,9 +62,6 @@ Some `sgp4go` executables are available
 
 ## References
 
-1. [`space-trace.org`](https://www.space-track.org/)'s [SGP4 binaries
-   and example code](https://www.space-track.org/documentation#/sgp4).
-
 1. [SGP4 in
    AIAA-2006-6753-Rev2](http://celestrak.com/publications/AIAA/2006-6753/AIAA-2006-6753-Rev2.pdf).
 
@@ -73,3 +70,7 @@ Some `sgp4go` executables are available
    [at
    Amazon](https://www.amazon.com/Fundamentals-Astrodynamics-Applications-Technology-Library/dp/1881883183/ref=pd_lpo_14_t_0/140-1650425-3257455)).
    
+1. [`space-trace.org`](https://www.space-track.org/)'s [SGP4 binaries
+   and example code](https://www.space-track.org/documentation#/sgp4).
+
+1. [C source code for this implementation](https://github.com/aholinch/sgp4/tree/master/src/c).
