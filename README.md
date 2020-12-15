@@ -1,10 +1,14 @@
 # SGP4 C transpiled to Go
 
+_Warning: This code is experimental; please see the
+[LICENSE](LICENSE)._
+
 An
 [SGP4](http://celestrak.com/publications/AIAA/2006-6753/AIAA-2006-6753-Rev2.pdf)
 implementation based on
 [`github.com/aholinch/sgp4/tree/master/src/c`](https://github.com/aholinch/sgp4/tree/master/src/c),
-which ultimated originated with [David Vallado](https://celestrak.com/software/vallado-sw.php).
+which ultimately originated with [David
+Vallado](https://celestrak.com/software/vallado-sw.php).
 
 ```
     This file contains the sgp4 procedures for analytical propagation
@@ -55,3 +59,17 @@ from `stdin` and writes propagation data to `stdout`. See
 
 Some `sgp4go` executables are available
 [here](https://github.com/morphism/sgp4go/releases).
+
+## References
+
+1. [`space-trace.org`](https://www.space-track.org/)'s [SGP4 binaries
+   and example code](https://www.space-track.org/documentation#/sgp4).
+
+1. [SGP4 in
+   AIAA-2006-6753-Rev2](http://celestrak.com/publications/AIAA/2006-6753/AIAA-2006-6753-Rev2.pdf).
+
+1. [Fundamentals of Astrodynamics and
+   Applications](https://celestrak.com/software/vallado-sw.php) (also
+   [at
+   Amazon](https://www.amazon.com/Fundamentals-Astrodynamics-Applications-Technology-Library/dp/1881883183/ref=pd_lpo_14_t_0/140-1650425-3257455)).
+   
