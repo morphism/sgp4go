@@ -35,11 +35,13 @@ func BenchmarkProp(b *testing.B) {
 	}
 }
 
-func Example() {
-	var (
-		tle = `ISS (ZARYA)             
+var ISS = `ISS (ZARYA)             
 1 25544U 98067A   20349.28181795  .00001103  00000-0  27992-4 0  9997
 2 25544  51.6443 177.3570 0001731 128.2351  43.6939 15.49184106259930`
+
+func Example() {
+	var (
+		tle = ISS
 
 		lines = strings.Split(tle, "\n")
 		o, _  = NewTLE(lines[1], lines[2])
@@ -85,5 +87,26 @@ func TestSemiMajorAxis(t *testing.T) {
 
 	if  got < want - epsilon || want + epsilon < got {
 		t.Fatal(got -want)
+	}
+}
+
+func TestLines(t *testing.T) {
+	var (
+		tle = ISS
+		lines = strings.Split(tle, "\n")
+		o, err  = NewTLE(lines[1], lines[2])
+	)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+	line1, line2 := o.Lines()
+
+	if line1 != lines[1] {
+		t.Fatal(line1)
+	}
+	
+	if line2 != lines[2] {
+		t.Fatal(line2)
 	}
 }

@@ -1,6 +1,7 @@
 package sgp4go
 
 import (
+	"bytes"
 	"fmt"
 	"math"
 	"strings"
@@ -202,4 +203,12 @@ func (tle *TLE) SemiMajorAxisMeters() float64 {
 	)
 
 	return math.Pow(u, 1.0/3) / math.Pow(mm, 2.0/3)
+}
+
+// Lines returns line1 and line2 used to generate the TLE.
+func (tle *TLE) Lines() (string,string) {
+	f := func(bs [70]byte) string {
+		return string(bytes.Trim(bs[0:], "\x00"))
+	}
+	return f(tle.line1), f(tle.line2)
 }
