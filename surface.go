@@ -2,6 +2,7 @@ package sgp4go
 
 import (
 	"fmt"
+	"math"
 	"strings"
 	"time"
 )
@@ -190,4 +191,15 @@ func (o *TLE) Prop(t time.Time) (Ephemeris, error) {
 // NoradCatNum returns the NORAD catalog number of the TLE.
 func (o *TLE) NoradCatNum() int {
 	return int(o.objectNum)
+}
+
+// SemiMajorAxis returns what you would expect (hopefully).
+func (tle *TLE) SemiMajorAxisMeters() float64 {
+	var (
+		u      = 3.986004418e14
+		secs   = float64(24 * 60 * 60)
+		mm = tle.n * 2*math.Pi/secs
+	)
+
+	return math.Pow(u, 1.0/3) / math.Pow(mm, 2.0/3)
 }

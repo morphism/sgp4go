@@ -54,3 +54,36 @@ func Example() {
 	// Output:
 	// sgp4go.Ephemeris{V:sgp4go.Vect{X:-5.677866567405847, Y:-3.554868601056742, Z:3.696844342787944}, ECI:sgp4go.Vect{X:-4522.507182662008, Y:2857.518282965092, Z:-4201.949004177315}}
 }
+
+func getExample(t *testing.T) *TLE {
+	var (
+		tle = `ISS (ZARYA)             
+1 25544U 98067A   20349.28181795  .00001103  00000-0  27992-4 0  9997
+2 25544  51.6443 177.3570 0001731 128.2351  43.6939 15.49184106259930`
+
+		lines = strings.Split(tle, "\n")
+		o, err  = NewTLE(lines[1], lines[2])
+	)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	return o
+}
+
+func TestSemiMajorAxis(t *testing.T) {
+	var (
+		alt = 408.0
+		earthRadius = 6371.0
+		want = alt + earthRadius
+		o = getExample(t)
+		m = o.SemiMajorAxisMeters()
+		got = m / 1000
+		epsilon = 20.0 // km
+	)
+
+	if  got < want - epsilon || want + epsilon < got {
+		t.Fatal(got -want)
+	}
+}
