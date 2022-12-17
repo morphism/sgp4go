@@ -110,3 +110,23 @@ func TestLines(t *testing.T) {
 		t.Fatal(line2)
 	}
 }
+
+func TestEqual(t *testing.T) {
+	var (
+		x = getExample(t)
+		y = getExample(t)
+	)
+
+	t.Run("same", func(t *testing.T) {
+		if !x.EqualValues(y) {
+			t.Fatal(false)
+		}
+	})
+	
+	t.Run("different", func(t *testing.T) {
+		y.epoch++
+		if x.EqualValues(y) {
+			t.Fatal(true)
+		}
+	})
+}

@@ -212,3 +212,51 @@ func (tle *TLE) Lines() (string,string) {
 	}
 	return f(tle.line1), f(tle.line2)
 }
+
+// ObjectNum returns the object number as parsed from lines.
+func (tle *TLE) ObjectNum() int64 {
+	return tle.objectNum
+}
+
+// EqualElements checks that elements and related data are equal.
+func (x *TLE) EqualValues(y *TLE) bool {
+
+	if x.epoch != y.epoch {
+		return false
+	}
+	if x.ndot != y.ndot {
+		return false
+	}
+	if x.nddot != y.nddot {
+		return false
+	}
+	if x.bstar != y.bstar {
+		return false
+	}
+	if x.elnum != y.elnum {
+		return false
+	}
+	if x.incDeg != y.incDeg {
+		return false
+	}
+	if x.raanDeg != y.raanDeg {
+		return false
+	}
+	if x.ecc != y.ecc {
+		return false
+	}
+	if x.argpDeg != y.argpDeg {
+		return false
+	}
+	if x.maDeg != y.maDeg {
+		return false
+	}
+	if x.n != y.n {
+		return false
+	}
+	if x.revnum != y.revnum {
+		return false
+	}
+
+	return true
+}
