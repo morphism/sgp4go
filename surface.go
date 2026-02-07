@@ -166,10 +166,10 @@ type Vect struct {
 
 // Ephemeris represents position and velocity.
 type Ephemeris struct {
-	// V is velocity in m/sec.
+	// V is velocity in km/sec.
 	V Vect
 
-	// ECI is position in Earth-Centered Intertial coordinates.
+	// ECI is position in Earth-Centered Inertial coordinates.
 	ECI Vect
 }
 
@@ -197,16 +197,16 @@ func (o *TLE) NoradCatNum() int {
 // SemiMajorAxis returns what you would expect (hopefully).
 func (tle *TLE) SemiMajorAxisMeters() float64 {
 	var (
-		u      = 3.986004418e14
-		secs   = float64(24 * 60 * 60)
-		mm = tle.n * 2*math.Pi/secs
+		u    = 3.986004418e14
+		secs = float64(24 * 60 * 60)
+		mm   = tle.n * 2 * math.Pi / secs
 	)
 
 	return math.Pow(u, 1.0/3) / math.Pow(mm, 2.0/3)
 }
 
 // Lines returns line1 and line2 used to generate the TLE.
-func (tle *TLE) Lines() (string,string) {
+func (tle *TLE) Lines() (string, string) {
 	f := func(bs [70]byte) string {
 		return string(bytes.Trim(bs[0:], "\x00"))
 	}
